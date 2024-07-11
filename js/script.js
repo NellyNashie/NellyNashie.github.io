@@ -1,60 +1,41 @@
-/////////////////////////////////////////////////
-// Set current year
+let menu = document.querySelector('#menu-btn');
+let navbar = document.querySelector('.navbar');
 
-const yearEl = document.querySelector(".year");
-const currentYear = new Date().getFullYear();
+menu.onclick = () => {
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+};
 
-yearEl.textContent = currentYear;
+window.onscroll = () => {
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+};
 
-/////////////////////////////////////////////////
-// Make mobile navigation work
-
-const btnNavEl = document.querySelector(".btn-mobile-nav");
-const headerEl = document.querySelector(".header");
-
-btnNavEl.addEventListener("click", function () {
-  headerEl.classList.toggle("nav-open");
+document.querySelectorAll('.image-slider img').forEach(images => {
+    images.onclick = () => {
+        var src = images.getAttribute('src');
+        document.querySelector('.main-home-image').src = src;
+    };
 });
 
-////////////////////////////////////////////////
-// Smooth scrolling animation
-
-const allLinks = document.querySelectorAll("a:link");
-
-allLinks.forEach(function (link) {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    const href = link.getAttribute("href");
-    // Scroll back to top
-    if (href === "#") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-
-    // Scroll to other links
-    if (href !== "#" && href.startsWith("#")) {
-      const sectionEl = document.querySelector(href);
-      sectionEl.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-
-    // Close the mobile navigation
-    if (link.classList.contains("main-nav-link")) {
-      headerEl.classList.toggle("nav-open");
-    }
-  });
-});
-
-////////////////////////////////////////////////
-// Sticky header
-
-window.addEventListener("scroll", function () {
-  if (window.scrollY >= 720) {
-    this.document.body.classList.add("sticky");
-  } else {
-    this.document.body.classList.remove("sticky");
-  }
+var swiper = new Swiper(".review-slider", {
+    spaceBetween: 20,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    loop: true,
+    grabCursor: true,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1
+        },
+        768: {
+            slidesPerView: 2
+        }
+    },
 });
