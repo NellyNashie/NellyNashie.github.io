@@ -34,7 +34,7 @@
             <a href="#book">book</a>
         </nav>
 
-        <a href="#" class="btn">book a table</a>
+        <a href="#book" class="btn">book a table</a>
     </header>
 
     <!-- HOME -->
@@ -69,7 +69,12 @@
             <div class="content">
                 <h3 class="title">what's make our coffee special!</h3>
                 <p>Our journey begins with sourcing the finest coffee beans from the world’s most renowned coffee-growing regions. We partner directly with farmers who share our passion for quality and sustainability. Each bean is handpicked at the peak of ripeness to ensure the best flavor and aroma.</p>
-                <a href="#" class="btn">read more</a>
+                <p>Our journey begins with sourcing the finest coffee beans from the world’s most renowned coffee-growing regions. We partner directly with farmers who share our passion for quality and sustainability. Each bean is handpicked at the peak of ripeness to ensure the best flavor and aroma.</p>
+                <div id="moreContent">
+                    <p>Our coffee restaurant is the perfect place to relax, unwind, and enjoy a cup of freshly brewed coffee. Whether you're looking for a quiet spot to read, a place to catch up with friends,this is the place</p>
+                </div>
+                <button id="readMoreBtn" class="btn">Read More</button>
+            
                 <div class="icons-container">
                     <div class="icons">
                         <img src="image/about-icon-1.png" alt="">
@@ -300,7 +305,19 @@
 
     <!-- Custom JS File Link  -->
     <script src="js/script.js"></script>
-
+    <script>
+        document.getElementById("readMoreBtn").addEventListener("click", function() {
+            var moreContent = document.getElementById("moreContent");
+            if (moreContent.style.display === "none") {
+                moreContent.style.display = "block";
+                this.innerHTML = "Read Less";
+            } else {
+                moreContent.style.display = "none";
+                this.innerHTML = "Read More";
+            }
+        });
+    </script>
+    
 </body>
 
 </html>
